@@ -47,8 +47,8 @@ def baseline(y, deg=None, max_it=None, tol=None):
     x = np.linspace(0., cond, y.size)
     base = y.copy()
 
-    vander = np.vander(x, order)
-    vander_pinv = LA.pinv2(vander)
+    vander = np.vander(x, order)  #Generate a Vandermonde matrix https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.vander.html
+    vander_pinv = LA.pinv2(vander) #https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.pinv.html. solve least square problems directly
 
     for _ in range(max_it):
         coeffs_new = np.dot(vander_pinv, y)
